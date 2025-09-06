@@ -1,8 +1,4 @@
-Perfect ✅
-Here’s your **one single copy-paste ready README.md**.
-Just copy the whole block below, paste it into your `README.md`, and save.
 
----
 
 ```markdown
 # 💬 AI Token Counter App
