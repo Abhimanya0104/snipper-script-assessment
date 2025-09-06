@@ -47,6 +47,7 @@ npm install
 ```
 
 Create a `.env` file in the backend directory:
+
 Environment configuration:  
 A `.env` file is already provided in this project containing a working API key.  
 For now, you can use this existing `.env` file directly without creating a new one. 
