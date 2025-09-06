@@ -1,158 +1,140 @@
 
+# AI Token Counter Application
 
-```markdown
-# 💬 AI Token Counter App
-
-A full-stack application that integrates with **Google Gemini API** to provide AI-powered responses while accurately tracking:
-
-- Input tokens (from user prompts)  
-- Output tokens (from AI responses)  
-- Real-time cost estimation (based on Gemini per-token pricing)  
-- Conversation history with detailed token & cost breakdown  
+This project is a full-stack application that integrates with the Google Gemini API to analyze prompts, count tokens, and estimate costs based on actual per-token pricing. It provides a professional interface similar to modern AI chat systems, with clear tracking of token usage and costs for each interaction.
 
 ---
 
-## ✨ Features
-- Professional **ChatGPT-like UI** built with React + Vite  
-- Backend powered by **Node.js + Express**  
-- Uses **Gemini API** for AI responses  
-- Tokenization with [`gpt-tokenizer`](https://www.npmjs.com/package/gpt-tokenizer)  
-- Cost calculation **handled only by backend** with real Gemini pricing  
-- Conversation history showing:
-  - Input Tokens, Output Tokens  
-  - Input Cost, Output Cost, Total Cost  
+## Features
+
+- User enters prompts through a React-based frontend.
+- Backend service (Node.js/Express) sends prompts to the Gemini API.
+- Token counts are computed using a tokenizer library.
+- Input tokens, output tokens, and costs are calculated on the backend.
+- Cost breakdown includes input cost, output cost, and total cost.
+- Chat-style interface displays:
+  - User prompts
+  - AI responses
+  - Token usage
+  - Cost estimation
+- History of all interactions is maintained.
 
 ---
 
-## 📂 Project Structure
+## Technology Stack
+
+- Frontend: React (Vite), CSS
+- Backend: Node.js, Express
+- Tokenizer: gpt-tokenizer
+- AI Model: Google Gemini (default: gemini-1.5-flash)
+
+## Setup Instructions
+
+### 1. Clone the repository
 ```
 
-token-counter-app/
-├── backend/
-│   ├── server.js        # Express backend with Gemini + tokenizer + pricing
-│   ├── package.json
-│   └── .env             # API key, model, port
-│
-└── frontend/
-├── src/
-│   ├── App.jsx      # React frontend logic
-│   ├── App.css      # Styling (ChatGPT-like UI)
-│   └── main.jsx
-├── package.json
-└── public/
-
-````
-
----
-
-## ⚙️ Setup Instructions
-
-### 1. Clone the Repository
-```bash
-git clone https://github.com/your-username/token-counter-app.git
+git clone [https://github.com/your-username/token-counter-app.git](https://github.com/your-username/token-counter-app.git)
 cd token-counter-app
-````
 
-### 2. Backend Setup
+```
 
-```bash
+### 2. Backend setup
+```
+
 cd backend
 npm install
+
 ```
 
-Create a `.env` file in `/backend`:
+Create a `.env` file in the backend directory:
+Environment configuration:  
+A `.env` file is already provided in this project containing a working API key.  
+For now, you can use this existing `.env` file directly without creating a new one. 
+```
 
-```env
 GEMINI_API_KEY=your_gemini_api_key_here
 GEMINI_MODEL=gemini-1.5-flash
 PORT=5050
+
 ```
 
-Run the backend:
+Start the backend:
+```
 
-```bash
 npm start
+
 ```
 
-Backend will run at **[http://localhost:5050](http://localhost:5050)**
+The backend will run at:
+```
 
----
+[http://localhost:5050](http://localhost:5050)
 
-### 3. Frontend Setup
+```
 
-```bash
-cd ../frontend
+### 3. Frontend setup
+```
+
+cd ../frontend/vite-project
 npm install
 npm run dev
+
 ```
 
-Frontend will run at **[http://localhost:5173](http://localhost:5173)**
+The frontend will run at:
+```
+
+[http://localhost:5173](http://localhost:5173)
+
+```
 
 ---
 
-## 🧪 Usage
+## Usage
 
-1. Open **[http://localhost:5173](http://localhost:5173)**
-2. Enter a prompt (e.g., `Explain blockchain in simple terms`)
-3. Press **Send**
-4. You’ll see:
-
-   * AI’s response
-   * Input Tokens, Output Tokens
-   * Input Cost, Output Cost, Total Cost
-5. Previous prompts/responses appear in history
+1. Open the frontend in your browser.
+2. Enter a prompt in the text input and click Send.
+3. The backend processes the request by:
+   - Counting input tokens
+   - Sending the prompt to the Gemini API
+   - Receiving the AI response
+   - Counting output tokens
+   - Calculating input cost, output cost, and total cost
+4. Results are displayed in the UI along with the conversation history.
 
 ---
 
-## 📊 Example Response
+## Example API Response
 
-```json
+```
+
 {
-  "response": "Blockchain is a decentralized digital ledger...",
-  "inputTokens": 72,
-  "outputTokens": 210,
-  "inputCost": 0.0000252,
-  "outputCost": 0.0001470,
-  "totalCost": 0.0001722
+"response": "Blockchain is a decentralized digital ledger...",
+"inputTokens": 72,
+"outputTokens": 210,
+"inputCost": 0.0000252,
+"outputCost": 0.0001470,
+"totalCost": 0.0001722
 }
+
 ```
 
 ---
 
-## 💰 Gemini Pricing
+## Pricing
 
-By default, this app uses **Gemini 1.5 Flash**:
+Default model: Gemini 1.5 Flash  
+- Input: $0.00035 per 1,000 tokens  
+- Output: $0.00070 per 1,000 tokens  
 
-* Input: **\$0.00035 / 1K tokens**
-* Output: **\$0.00070 / 1K tokens**
+To use Gemini 1.5 Pro, update `.env`:
+```
 
-You can switch to **Gemini 1.5 Pro** in `.env`:
-
-```env
 GEMINI_MODEL=gemini-1.5-pro
-```
-
-Pricing automatically updates in backend calculations.
-
----
-
-## 🔮 Future Enhancements
-
-* Multi-model support (Gemini Pro, OpenAI GPT-4, Claude, etc.)
-* User authentication & usage tracking
-* Export conversation history
-* Admin dashboard for cost monitoring
-* Docker deployment
-
----
-
-## 📜 License
-
-MIT License © 2025 Your Name
 
 ```
 
+The backend automatically applies the correct pricing.
+
 ---
 
-Would you like me to also **add screenshots section with placeholders** (like `![screenshot](docs/screenshot.png)`) so the company sees a polished README with visuals too?
-```
